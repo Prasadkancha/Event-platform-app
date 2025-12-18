@@ -2,9 +2,9 @@ import axios from 'axios'
 
 // Ensure the base URL is a fully-qualified URL. Normalize common malformed values
 const apiUrl = import.meta.env.VITE_API_URL;
-let rawBase = apiUrl || 'https://your-frontend.onrender.com/api';
+let rawBase = apiUrl || 'http://localhost:4000/api';
 function normalizeBase(raw) {
-  if (!raw) return 'https://your-frontend.onrender.com/api'
+  if (!raw) return 'http://localhost:4000/api'
   // If starts with ':' (like ':4000/api') use current hostname
   if (raw.startsWith(':')) {
     return `${window.location.protocol}//${window.location.hostname}${raw}`
@@ -35,4 +35,5 @@ API.interceptors.request.use(req => {
 })
 
 export const API_URL = rawBase;
+export const SERVER_URL = rawBase.replace(/\/api\/?$/, '');
 export default API
