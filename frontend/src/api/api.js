@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-// Ensure the base URL is a fully-qualified URL. Normalize common malformed values
-let rawBase = import.meta.env.VITE_API_URL || https://event-platform-app-backend.onrender.com'
+const apiUrl = import.meta.env.VITE_API_URL;
+let rawBase = apiUrl || || https://event-platform-app-backend.onrender.com'
 function normalizeBase(raw) {
   if (!raw) return 'https://event-platform-app-backend.onrender.com'
   // If starts with ':' (like ':4000/api') use current hostname
