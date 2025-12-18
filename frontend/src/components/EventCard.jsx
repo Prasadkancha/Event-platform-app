@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { API_URL } from '../api/api'
 
 export default function EventCard({ event, onRsvp, onDelete, currentUser }) {
     const navigate = useNavigate()
@@ -24,7 +25,7 @@ export default function EventCard({ event, onRsvp, onDelete, currentUser }) {
             <div className="relative h-48 bg-gray-200">
                 {event.imageUrl ? (
                     <img
-                        src={`https://event-platform-app-backend.onrender.com${event.imageUrl}`}
+                        src={`${API_URL}${event.imageUrl}`}
                         alt={event.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />

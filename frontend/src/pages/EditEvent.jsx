@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import API from '../api/api'
+import API, { API_URL } from '../api/api'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 
@@ -36,7 +36,7 @@ export default function EditEvent() {
                     location: e.location
                 })
                 if (e.imageUrl) {
-                    setPreviewUrl(`http://localhost:4000${e.imageUrl}`)
+                    setPreviewUrl(`${API_URL}${e.imageUrl}`)
                 }
                 setLoading(false)
             } catch (err) {

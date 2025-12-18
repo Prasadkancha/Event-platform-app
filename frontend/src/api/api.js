@@ -34,4 +34,5 @@ API.interceptors.request.use(req => {
   return req
 })
 
+export const API_URL = rawBase;
 export default API
