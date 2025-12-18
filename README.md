@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Event Platform
 
 A full-stack event management application built with the MERN stack (MongoDB, Express, React, Node.js). Users can browse events, view details, and RSVP. Authenticated users can create and manage their own events. Administrators have platform-wide control.
@@ -110,10 +109,15 @@ The system automatically seeds an admin user if not present:
 ## 🌐 Deployment Note
 To deploy this application:
 
-1.  **Frontend**: Push the `frontend` folder to **Netlify**.
-2.  **Backend**: Push the `backend` folder to **Render**.
+1.  **Backend**: Push the `backend` folder to **Render** (Web Service).
+2.  **Frontend**: Push the `frontend` folder to **Render** (Static Site).
 3.  **Database**: Use **MongoDB Atlas**.
-4.  **Environment**: ensure all `.env` variables are set in your hosting provider's dashboard.
-=======
-# Event-platform-app
->>>>>>> 64aa99ca2783cc31fcc5470fae1c8945c1349d1c
+
+### Environment Variables (Render)
+Make sure to set these in your Render Dashboard:
+
+| Service | Variable | Value Example |
+| :--- | :--- | :--- |
+| **Backend** | `MONGODB_URI` | `mongodb+srv://...` |
+| **Backend** | `JWT_SECRET` | `your_secret_key` |
+| **Frontend** | `VITE_API_URL` | `https://your-backend-app.onrender.com/api` (Must end in `/api`) |
