@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 // Ensure the base URL is a fully-qualified URL. Normalize common malformed values
-let rawBase = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
+const apiUrl = import.meta.env.VITE_API_URL;
+let rawBase = apiUrl || 'http://localhost:4000/api';
 function normalizeBase(raw) {
   if (!raw) return 'http://localhost:4000/api'
   // If starts with ':' (like ':4000/api') use current hostname

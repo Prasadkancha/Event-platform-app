@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Event Platform
 
 A full-stack event management application built with the MERN stack (MongoDB, Express, React, Node.js). Users can browse events, view details, and RSVP. Authenticated users can create and manage their own events. Administrators have platform-wide control.
@@ -113,3 +114,6 @@ To deploy this application:
 2.  **Backend**: Push the `backend` folder to **Render**.
 3.  **Database**: Use **MongoDB Atlas**.
 4.  **Environment**: ensure all `.env` variables are set in your hosting provider's dashboard.
+=======
+# Event-platform-app
+>>>>>>> 64aa99ca2783cc31fcc5470fae1c8945c1349d1c
