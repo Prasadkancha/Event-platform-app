@@ -24,7 +24,7 @@ export default function EventCard({ event, onRsvp, onDelete, currentUser }) {
             <div className="relative h-48 bg-gray-200">
                 {event.imageUrl ? (
                     <img
-                        src={`http://localhost:4000${event.imageUrl}`}
+                        src={`https://event-platform-app-backend.onrender.com${event.imageUrl}`}
                         alt={event.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
