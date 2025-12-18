@@ -1,0 +1,7 @@
+{
+  "events": [
+    { "_id": "sample-1", "title": "Community Meetup", "description": "A friendly meetup to talk tech and coffee.", "capacity": 50, "attendees": [] },
+    { "_id": "sample-2", "title": "Yoga in the Park", "description": "Morning yoga session for all levels.", "capacity": 30, "attendees": [] },
+    { "_id": "sample-3", "title": "Board Games Night", "description": "Bring a game and a friend — strategy encouraged.", "capacity": 20, "attendees": [] }
+  ]
+}
