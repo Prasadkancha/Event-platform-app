@@ -4,7 +4,7 @@ import axios from 'axios'
 const apiUrl = import.meta.env.VITE_API_URL;
 let rawBase = apiUrl || 'https://event-platform-app-backend.onrender.com';
 function normalizeBase(raw) {
-  if (!raw) return 'https://event-platform-app-backend.onrender.com'
+  if (!raw) return 'https://event-platform-app-backend.onrender.com/api'
   // If starts with ':' (like ':4000/api') use current hostname
   if (raw.startsWith(':')) {
     return `${window.location.protocol}//${window.location.hostname}${raw}`
