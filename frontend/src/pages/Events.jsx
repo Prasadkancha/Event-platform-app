@@ -54,7 +54,7 @@ export default function Events() {
       return;
     }
     const userId = user.id;
-    const isAttending = event.attendees.some(a => a === userId || a._id === userId);
+    const isAttending = event.attendees?.some(a => a === userId || a._id === userId);
 
     try {
       if (isAttending) {

@@ -3,16 +3,24 @@ import API from '../api/api'
 
 export const AuthContext = createContext()
 
-export default function AuthProvider({ children }){
+export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  useEffect(()=>{
+  useEffect(() => {
     const t = localStorage.getItem('token')
     const u = localStorage.getItem('user')
-    if (t && u) setUser(JSON.parse(u))
+    if (t && u) {
+      try {
+        setUser(JSON.parse(u))
+      } catch (e) {
+        console.error("Failed to parse user from local storage", e)
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
+      }
+    }
     setLoading(false)
-  },[])
+  }, [])
 
   const login = async (email, password) => {
     const res = await API.post('/auth/login', { email, password })

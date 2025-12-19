@@ -35,5 +35,5 @@ API.interceptors.request.use(req => {
 })
 
 export const API_URL = rawBase;
-export const SERVER_URL = rawBase.replace(/\/api\/?$/, "");
+export const SERVER_URL = rawBase.replace(/\/api.js\/?$/, "");
 export default API
