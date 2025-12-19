@@ -1,30 +1,43 @@
 import axios from 'axios'
 
-// Ensure the base URL is a fully-qualified URL. Normalize common malformed values
-const apiUrl = import.meta.env.VITE_API_URL;
-let rawBase = apiUrl || 'https://event-platform-app-backend.onrender.com';
-function normalizeBase(raw) {
-  if (!raw) return 'https://event-platform-app-backend.onrender.com/api'
-  // If starts with ':' (like ':4000/api') use current hostname
-  if (raw.startsWith(':')) {
-    return `${window.location.protocol}//${window.location.hostname}${raw}`
-  }
-  // If protocol-relative (//host/path)
-  if (raw.startsWith('//')) {
-    return `${window.location.protocol}${raw}`
-  }
-  // If starts with single slash, make absolute on current host
-  if (raw.startsWith('/')) {
-    return `${window.location.protocol}//${window.location.hostname}${raw}`
-  }
-  return raw
+// 1. Get raw URL from env or default
+const envUrl = import.meta.env.VITE_API_URL;
+const defaultUrl = 'https://event-platform-app-backend.onrender.com';
+
+// 2. Helper to normalize to a full server root (WITHOUT /api suffix)
+function getNormalizedServerRoot(raw, backup) {
+  let url = raw || backup;
+
+  // Handle protocol-relative or partials
+  if (!url) return 'https://event-platform-app-backend.onrender.com';
+  if (url.startsWith(':')) url = `${window.location.protocol}//${window.location.hostname}${url}`;
+  if (url.startsWith('//')) url = `${window.location.protocol}${url}`;
+  if (url.startsWith('/')) url = `${window.location.protocol}//${window.location.hostname}${url}`;
+
+  // Strip trailing slashes
+  url = url.replace(/\/+$/, '');
+
+  // Strip trailing /api if present (case insensitive)
+  url = url.replace(/\/api$/i, '');
+
+  return url;
 }
 
-const baseURL = normalizeBase(rawBase)
-console.info('[API] baseURL =', baseURL)
+// 3. Define constants
+const serverRoot = getNormalizedServerRoot(envUrl, defaultUrl);
 
+// SERVER_URL: The root for static assets (e.g. images) -> http://localhost:4000
+export const SERVER_URL = serverRoot;
+
+// API_URL: The endpoint for data calls -> http://localhost:4000/api
+export const API_URL = `${serverRoot}/api`;
+
+console.info('[Config] Server Root:', SERVER_URL);
+console.info('[Config] API Endpoint:', API_URL);
+
+// 4. Create Axios instance
 const API = axios.create({
-  baseURL,
+  baseURL: API_URL,
   headers: { 'Content-Type': 'application/json' },
 })
 
@@ -34,6 +47,4 @@ API.interceptors.request.use(req => {
   return req
 })
 
-export const API_URL = rawBase;
-export const SERVER_URL = rawBase.replace(/\/api.js\/?$/, "");
 export default API
