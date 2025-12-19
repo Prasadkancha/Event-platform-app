@@ -87,7 +87,7 @@ export default function Events() {
   // ... (Loading and Error UI remains the same) ...
 
   return (
-    <div className="w-3/4 md:w-3/4 mx-auto py-8">
+    <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Error banner code... */}
 
       {/* 3. ADD HEADER WITH CREATE BUTTON */}

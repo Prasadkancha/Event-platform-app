@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { SERVER_URL } from '../api/api'
 
 export default function EventCard({ event, onRsvp, onDelete, currentUser }) {
+    if (!event) return null;
     const navigate = useNavigate()
     const isCreator = currentUser && (event.creator === currentUser.id || event.creator === currentUser._id);
     const isAdmin = currentUser?.isAdmin;
@@ -41,7 +42,7 @@ export default function EventCard({ event, onRsvp, onDelete, currentUser }) {
             </div>
 
             {/* Content */}
-            <div className="p-5 flex flex-col flex-grow">
+            <div className="p-5 flex flex-col grow">
                 {/* Meta Row: Time & Location */}
                 <div className="flex items-center text-xs text-gray-500 mb-3 space-x-3">
                     {timeStr && (
@@ -62,7 +63,7 @@ export default function EventCard({ event, onRsvp, onDelete, currentUser }) {
                     {event.title}
                 </h3>
 
-                <p className="text-sm text-gray-500 line-clamp-2 mb-4 flex-grow">
+                <p className="text-sm text-gray-500 line-clamp-2 mb-4 grow">
                     {event.description}
                 </p>
 
