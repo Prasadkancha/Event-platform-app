@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import Home from './pages/Home'
 import NavBar from './components/NavBar'
 import Events from './pages/Events'
@@ -38,6 +39,7 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
+        <SpeedInsights />
       </div>
     </AuthProvider>
   )
